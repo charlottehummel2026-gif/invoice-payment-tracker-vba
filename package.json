@@ -1,0 +1,10 @@
+{
+  "name": "invoice-payment-tracker-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Charlotte Hummel's Excel VBA invoice and payment tracker portfolio demo",
+  "scripts": {
+    "test": "node --test tests/engine.test.cjs"
+  },
+  "engines": {"node": ">=20"}
+}

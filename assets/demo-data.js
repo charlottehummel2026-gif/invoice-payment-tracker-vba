@@ -1,0 +1,472 @@
+/* Fictional demonstration data. Currency amounts are integer cents. */
+const DEMO_SEED = {
+  "asOf": "2026-10-25",
+  "customers": [
+    "Alder Office Co.",
+    "Brookfield Services",
+    "Cedarstone Retail",
+    "Harborview Supply",
+    "Juniper Studio",
+    "Willow Works"
+  ],
+  "owners": [
+    "Alex Morgan",
+    "Jordan Lee",
+    "Taylor Reed"
+  ],
+  "invoices": [
+    {
+      "id": "INV-2026-001",
+      "customer": "Alder Office Co.",
+      "po": "PO-4101",
+      "description": "Quarterly office support",
+      "issued": "2026-06-01",
+      "due": "2026-07-01",
+      "amount": 240000,
+      "owner": "Alex Morgan",
+      "followUp": "2026-10-26",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-002",
+      "customer": "Brookfield Services",
+      "po": "PO-4102",
+      "description": "Equipment maintenance",
+      "issued": "2026-06-15",
+      "due": "2026-07-15",
+      "amount": 180000,
+      "owner": "Jordan Lee",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-003",
+      "customer": "Cedarstone Retail",
+      "po": "PO-4103",
+      "description": "Workspace installation",
+      "issued": "2026-07-01",
+      "due": "2026-07-31",
+      "amount": 360000,
+      "owner": "Taylor Reed",
+      "followUp": "2026-10-28",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-004",
+      "customer": "Harborview Supply",
+      "po": "PO-4104",
+      "description": "Monthly service plan",
+      "issued": "2026-07-10",
+      "due": "2026-08-09",
+      "amount": 125000,
+      "owner": "Alex Morgan",
+      "followUp": "2026-10-26",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-005",
+      "customer": "Juniper Studio",
+      "po": "PO-4105",
+      "description": "Staff training session",
+      "issued": "2026-07-20",
+      "due": "2026-08-19",
+      "amount": 290000,
+      "owner": "Jordan Lee",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-006",
+      "customer": "Willow Works",
+      "po": "PO-4106",
+      "description": "Equipment order",
+      "issued": "2026-08-01",
+      "due": "2026-08-31",
+      "amount": 480000,
+      "owner": "Taylor Reed",
+      "followUp": "2026-10-28",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-007",
+      "customer": "Alder Office Co.",
+      "po": "PO-4107",
+      "description": "Document services",
+      "issued": "2026-08-07",
+      "due": "2026-09-06",
+      "amount": 165000,
+      "owner": "Alex Morgan",
+      "followUp": "2026-10-26",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-008",
+      "customer": "Brookfield Services",
+      "po": "PO-4108",
+      "description": "Office relocation support",
+      "issued": "2026-08-15",
+      "due": "2026-09-14",
+      "amount": 420000,
+      "owner": "Jordan Lee",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-009",
+      "customer": "Cedarstone Retail",
+      "po": "PO-4109",
+      "description": "Monthly service plan",
+      "issued": "2026-08-24",
+      "due": "2026-09-23",
+      "amount": 210000,
+      "owner": "Taylor Reed",
+      "followUp": "2026-10-28",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-010",
+      "customer": "Harborview Supply",
+      "po": "PO-4110",
+      "description": "Technology support",
+      "issued": "2026-09-01",
+      "due": "2026-10-01",
+      "amount": 320000,
+      "owner": "Alex Morgan",
+      "followUp": "2026-10-26",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-011",
+      "customer": "Juniper Studio",
+      "po": "PO-4111",
+      "description": "Supply replenishment",
+      "issued": "2026-09-05",
+      "due": "2026-10-05",
+      "amount": 95000,
+      "owner": "Jordan Lee",
+      "followUp": "2026-10-27",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-012",
+      "customer": "Willow Works",
+      "po": "PO-4112",
+      "description": "Workspace installation",
+      "issued": "2026-09-10",
+      "due": "2026-10-10",
+      "amount": 275000,
+      "owner": "Taylor Reed",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-013",
+      "customer": "Alder Office Co.",
+      "po": "PO-4113",
+      "description": "Equipment order",
+      "issued": "2026-09-15",
+      "due": "2026-10-15",
+      "amount": 580000,
+      "owner": "Alex Morgan",
+      "followUp": "2026-10-26",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-014",
+      "customer": "Brookfield Services",
+      "po": "PO-4114",
+      "description": "Quarterly office support",
+      "issued": "2026-09-20",
+      "due": "2026-10-20",
+      "amount": 145000,
+      "owner": "Jordan Lee",
+      "followUp": "2026-10-27",
+      "notes": "Confirm payment date"
+    },
+    {
+      "id": "INV-2026-015",
+      "customer": "Cedarstone Retail",
+      "po": "PO-4115",
+      "description": "Staff training session",
+      "issued": "2026-09-25",
+      "due": "2026-10-25",
+      "amount": 225000,
+      "owner": "Taylor Reed",
+      "followUp": "2026-10-28",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-016",
+      "customer": "Harborview Supply",
+      "po": "PO-4116",
+      "description": "Technology support",
+      "issued": "2026-10-01",
+      "due": "2026-10-31",
+      "amount": 390000,
+      "owner": "Alex Morgan",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-017",
+      "customer": "Juniper Studio",
+      "po": "PO-4117",
+      "description": "Document services",
+      "issued": "2026-10-03",
+      "due": "2026-11-02",
+      "amount": 185000,
+      "owner": "Jordan Lee",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-018",
+      "customer": "Willow Works",
+      "po": "PO-4118",
+      "description": "Monthly service plan",
+      "issued": "2026-10-05",
+      "due": "2026-11-04",
+      "amount": 310000,
+      "owner": "Taylor Reed",
+      "followUp": "",
+      "notes": "Confirm credit or refund"
+    },
+    {
+      "id": "INV-2026-019",
+      "customer": "Alder Office Co.",
+      "po": "PO-4119",
+      "description": "Supply replenishment",
+      "issued": "2026-10-08",
+      "due": "2026-11-07",
+      "amount": 120000,
+      "owner": "Alex Morgan",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-020",
+      "customer": "Brookfield Services",
+      "po": "PO-4120",
+      "description": "Equipment maintenance",
+      "issued": "2026-10-12",
+      "due": "2026-11-11",
+      "amount": 460000,
+      "owner": "Jordan Lee",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-021",
+      "customer": "Cedarstone Retail",
+      "po": "PO-4121",
+      "description": "Document services",
+      "issued": "2026-10-15",
+      "due": "2026-11-14",
+      "amount": 75000,
+      "owner": "Taylor Reed",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-022",
+      "customer": "Harborview Supply",
+      "po": "PO-4122",
+      "description": "Workspace installation",
+      "issued": "2026-10-18",
+      "due": "2026-11-17",
+      "amount": 260000,
+      "owner": "Alex Morgan",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-023",
+      "customer": "Juniper Studio",
+      "po": "PO-4123",
+      "description": "Staff training session",
+      "issued": "2026-10-21",
+      "due": "2026-11-20",
+      "amount": 335000,
+      "owner": "Jordan Lee",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-024",
+      "customer": "Willow Works",
+      "po": "PO-4124",
+      "description": "Monthly service plan",
+      "issued": "2026-10-24",
+      "due": "2026-11-23",
+      "amount": 195000,
+      "owner": "Taylor Reed",
+      "followUp": "",
+      "notes": ""
+    },
+    {
+      "id": "INV-2026-025",
+      "customer": "Harborview Supply",
+      "po": "PO-7114",
+      "description": "Workspace Maintenance",
+      "issued": "2026-10-25",
+      "due": "2026-11-01",
+      "amount": 50000,
+      "owner": "Jordan Lee",
+      "followUp": "2026-11-04",
+      "notes": ""
+    }
+  ],
+  "payments": [
+    {
+      "id": "PAY-001",
+      "invoiceId": "INV-2026-001",
+      "received": "2026-06-20",
+      "method": "ACH",
+      "amount": 50000,
+      "reference": "RCPT-7101",
+      "recordedBy": "Alex Morgan",
+      "notes": ""
+    },
+    {
+      "id": "PAY-002",
+      "invoiceId": "INV-2026-002",
+      "received": "2026-07-10",
+      "method": "Check",
+      "amount": 180000,
+      "reference": "RCPT-7102",
+      "recordedBy": "Jordan Lee",
+      "notes": ""
+    },
+    {
+      "id": "PAY-003",
+      "invoiceId": "INV-2026-003",
+      "received": "2026-08-07",
+      "method": "ACH",
+      "amount": 90000,
+      "reference": "RCPT-7103",
+      "recordedBy": "Taylor Reed",
+      "notes": ""
+    },
+    {
+      "id": "PAY-004",
+      "invoiceId": "INV-2026-005",
+      "received": "2026-08-15",
+      "method": "Bank transfer",
+      "amount": 290000,
+      "reference": "RCPT-7104",
+      "recordedBy": "Alex Morgan",
+      "notes": ""
+    },
+    {
+      "id": "PAY-005",
+      "invoiceId": "INV-2026-006",
+      "received": "2026-08-25",
+      "method": "Card",
+      "amount": 100000,
+      "reference": "RCPT-7105",
+      "recordedBy": "Jordan Lee",
+      "notes": ""
+    },
+    {
+      "id": "PAY-006",
+      "invoiceId": "INV-2026-006",
+      "received": "2026-09-15",
+      "method": "Card",
+      "amount": 80000,
+      "reference": "RCPT-7106",
+      "recordedBy": "Taylor Reed",
+      "notes": ""
+    },
+    {
+      "id": "PAY-007",
+      "invoiceId": "INV-2026-008",
+      "received": "2026-09-01",
+      "method": "ACH",
+      "amount": 420000,
+      "reference": "RCPT-7107",
+      "recordedBy": "Alex Morgan",
+      "notes": ""
+    },
+    {
+      "id": "PAY-008",
+      "invoiceId": "INV-2026-009",
+      "received": "2026-09-28",
+      "method": "Check",
+      "amount": 110000,
+      "reference": "RCPT-7108",
+      "recordedBy": "Jordan Lee",
+      "notes": ""
+    },
+    {
+      "id": "PAY-009",
+      "invoiceId": "INV-2026-010",
+      "received": "2026-10-08",
+      "method": "ACH",
+      "amount": 120000,
+      "reference": "RCPT-7109",
+      "recordedBy": "Taylor Reed",
+      "notes": ""
+    },
+    {
+      "id": "PAY-010",
+      "invoiceId": "INV-2026-012",
+      "received": "2026-10-08",
+      "method": "Bank transfer",
+      "amount": 275000,
+      "reference": "RCPT-7110",
+      "recordedBy": "Alex Morgan",
+      "notes": ""
+    },
+    {
+      "id": "PAY-011",
+      "invoiceId": "INV-2026-013",
+      "received": "2026-10-15",
+      "method": "ACH",
+      "amount": 150000,
+      "reference": "RCPT-7111",
+      "recordedBy": "Jordan Lee",
+      "notes": ""
+    },
+    {
+      "id": "PAY-012",
+      "invoiceId": "INV-2026-013",
+      "received": "2026-10-22",
+      "method": "ACH",
+      "amount": 150000,
+      "reference": "RCPT-7112",
+      "recordedBy": "Taylor Reed",
+      "notes": ""
+    },
+    {
+      "id": "PAY-013",
+      "invoiceId": "INV-2026-016",
+      "received": "2026-10-20",
+      "method": "Card",
+      "amount": 100000,
+      "reference": "RCPT-7113",
+      "recordedBy": "Alex Morgan",
+      "notes": ""
+    },
+    {
+      "id": "PAY-014",
+      "invoiceId": "INV-2026-018",
+      "received": "2026-10-22",
+      "method": "Bank transfer",
+      "amount": 315000,
+      "reference": "RCPT-7114",
+      "recordedBy": "Jordan Lee",
+      "notes": "Includes $50 overpayment"
+    },
+    {
+      "id": "PAY-015",
+      "invoiceId": "INV-2026-019",
+      "received": "2026-10-23",
+      "method": "ACH",
+      "amount": 120000,
+      "reference": "RCPT-7115",
+      "recordedBy": "Taylor Reed",
+      "notes": ""
+    }
+  ]
+};
+if (typeof module !== "undefined") module.exports = DEMO_SEED;

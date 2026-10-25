@@ -1,0 +1,9 @@
+{
+  "workbook": "downloads/invoice-payment-tracker.xlsm",
+  "sha256": "9f9bdca04f3044c24f70230783d0b7ed06b5b354d62e9b81b7f975232ff57bee",
+  "asOf": "2026-10-25",
+  "invoices": 25,
+  "payments": 15,
+  "data": "fictional",
+  "originalWorkbookUnchanged": true
+}

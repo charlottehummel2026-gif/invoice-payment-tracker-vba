@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Charlotte Hummel's Excel VBA portfolio: an invoice and payment tracker with validated entry, payment matching, and receivables reporting. Explore the interactive demo and download the workbook.">
+  <meta name="theme-color" content="#142c40">
+  <title>Invoice & Payment Tracker · Charlotte Hummel</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/demo-data.js"></script>
+  <script defer src="assets/tracker-engine.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#demo">Skip to interactive demo</a>
+<header class="site-header wrap">
+  <a class="wordmark" href="#top">Charlotte <strong>Hummel</strong><span>BUSINESS AUTOMATION PORTFOLIO</span></a>
+  <nav aria-label="Main navigation"><a href="#demo">Interactive demo</a><a href="#inside">Inside the workbook</a><a href="downloads/invoice-payment-tracker.xlsm" download class="nav-download">Download Excel <span aria-hidden="true">↗</span></a></nav>
+</header>
+<main id="top">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="dot"></span> EXCEL · VBA · RECEIVABLES</p>
+      <h1 id="hero-title">A clear view of<br>every <em>invoice.</em></h1>
+      <p class="project-name">Invoice & Payment Tracker</p>
+      <p class="hero-description">From a new invoice to a recorded payment and an updated balance. A practical Excel tool that brings everyday receivables work into one organized workflow.</p>
+      <div class="hero-actions"><a class="button primary" href="#demo">Try the workflow <span aria-hidden="true">↓</span></a><a class="text-link" href="downloads/invoice-payment-tracker.xlsm" download>Get the VBA workbook <span aria-hidden="true">↗</span></a></div>
+      <p class="quiet">Fictional business data. Real VBA source included.</p>
+    </div>
+    <figure class="hero-art"><img src="assets/project-cover.png" width="1102" height="1427" alt="Invoice and Payment Tracker cover with Charlotte Hummel's CH logo, invoice, payment, and receivables artwork"><figcaption>Designed for the work behind the numbers.</figcaption></figure>
+  </section>
+  <section class="workflow wrap" aria-label="Project workflow">
+    <div><span class="step-number">01</span><h2>Capture the invoice</h2><p>Required fields, date checks, and automatic IDs keep entry consistent.</p></div>
+    <div><span class="step-number">02</span><h2>Apply the payment</h2><p>Match receipts to invoices, including partial payments and overpayments.</p></div>
+    <div><span class="step-number">03</span><h2>See what’s outstanding</h2><p>Review customer balances, overdue amounts, and receivables aging.</p></div>
+  </section>
+  <section class="demo-section" id="demo" aria-labelledby="demo-title">
+    <div class="wrap">
+      <div class="section-heading"><div><p class="eyebrow">EXPLORE THE WORKFLOW</p><h2 id="demo-title">Put the tracker to work.</h2></div><p>This browser preview recreates the workflow in JavaScript. The downloadable Excel workbook runs the VBA automation.</p></div>
+      <div class="demo-shell">
+        <div class="demo-topbar"><div><span class="app-icon" aria-hidden="true">CH</span><strong>Receivables workspace</strong><span class="demo-label">FICTIONAL DATA</span></div><button class="text-button" id="reset-demo" type="button">Reset demo <span aria-hidden="true">↺</span></button></div>
+        <div class="workspace">
+          <div class="workspace-heading"><div><h3>Invoice overview</h3><p>Follow the guided example or add your own sample entry.</p></div><label class="date-control" for="as-of">Reporting date<input type="date" id="as-of" min="2000-01-01" max="2100-12-31" required></label></div>
+          <div class="demo-actions"><button class="button primary" id="start-tour" type="button">Start guided demo <span aria-hidden="true">→</span></button><button class="button secondary" id="new-invoice" type="button">+ New invoice</button><button class="button secondary" id="new-payment" type="button">Record payment</button></div>
+          <div class="tour-panel" id="tour-panel" hidden><div><span class="eyebrow" id="tour-step"></span><h4 id="tour-title"></h4><p id="tour-copy"></p></div><button class="button primary" id="tour-next" type="button"></button><button class="icon-button" id="tour-close" aria-label="Close guided demo" type="button">×</button></div>
+          <div class="metric-grid" aria-label="Receivables totals"><article><span>Total invoiced</span><strong id="total-invoiced"></strong><small>Issued by reporting date</small></article><article><span>Payments received</span><strong id="total-received"></strong><small>Applied to issued invoices</small></article><article class="metric-featured"><span>Outstanding</span><strong id="total-outstanding"></strong><small id="open-count"></small></article><article><span>Past due</span><strong id="total-past-due"></strong><small>Outstanding after the due date</small></article></div>
+          <div class="aging-row"><div><h4>Receivables aging</h4><p>Outstanding balance by days past due</p></div><div class="aging-bars" id="aging-bars" role="list"></div></div>
+          <div class="register-toolbar"><div class="tabs" aria-label="Register view"><button type="button" class="active" id="tab-invoices" aria-pressed="true">Invoices <span id="invoice-count"></span></button><button type="button" id="tab-payments" aria-pressed="false">Payments <span id="payment-count"></span></button></div><div class="filters"><label class="search-label"><span class="sr-only">Search invoices or payments</span><input type="search" id="search" placeholder="Search ID or customer…"></label><button class="filter-button" id="overdue-filter" aria-pressed="false" type="button">Overdue only</button></div></div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Invoice and payment records"><table id="register"><caption class="sr-only" id="register-caption">Invoice register</caption><thead id="register-head"></thead><tbody id="register-body"></tbody></table></div>
+          <div class="register-footer"><span id="row-count"></span><span id="overpayment-note"></span></div>
+          <p class="demo-message" id="demo-message" aria-live="polite" role="status">Ready. Your changes stay in this browser tab; reset restores the sample data.</p>
+        </div>
+      </div>
+      <noscript><p class="noscript">Turn on JavaScript to use the interactive demo, or download the Excel workbook above.</p></noscript>
+    </div>
+  </section>
+  <section class="inside wrap" id="inside" aria-labelledby="inside-title">
+    <div class="section-heading"><div><p class="eyebrow">THE EXCEL PROJECT</p><h2 id="inside-title">An interface with substance.</h2></div><p>The workbook combines structured tables, worksheet formulas, and VBA procedures with a clear separation between input and calculated fields.</p></div>
+    <div class="inside-grid"><figure class="workbook-shot"><a href="assets/workbook-entry.png"><img src="assets/workbook-entry.png" width="1310" height="1148" loading="lazy" alt="Actual workbook entry sheet showing side-by-side invoice and payment forms with Save and Clear buttons"></a><figcaption>Entry worksheet rendered from the downloadable workbook.</figcaption></figure><div class="implementation"><h3>What the automation handles</h3><ol><li><strong>Validated entry</strong><p>Checks required fields, dates, amounts, and matching invoice IDs before saving.</p></li><li><strong>Table updates</strong><p>Reuses empty rows or expands Excel tables, assigns IDs, and fills calculated columns.</p></li><li><strong>Reporting</strong><p>Recalculates customer balances and aging using the chosen reporting date.</p></li><li><strong>Navigation & recovery</strong><p>Opens on the cover, routes buttons to the right workflow, and restores calculated formulas with Refresh.</p></li></ol><a class="text-link" href="src/vba/ModTracker.bas">Read the main VBA module <span aria-hidden="true">↗</span></a></div></div>
+    <details class="technical-detail"><summary>Implementation and validation notes</summary><div><p><strong>Excel:</strong> five worksheets, two structured tables, formula-based balances and aging, and macro-assigned buttons. <strong>VBA:</strong> <code>ModTracker</code> handles entry and navigation; <code>ModFormulas</code> restores calculated columns; <code>ThisWorkbook</code> activates the cover.</p><p>The browser preview uses integer cents and a fixed sample reporting date. It does not execute VBA or edit the Excel file. Workbook checks use an offline VBA interpreter; native Excel validation is documented separately and has not been certified here.</p><p><a href="docs/TESTING.md">Test coverage</a> · <a href="docs/ARCHITECTURE.md">Architecture</a> · <a href="docs/DEMO.md">Walkthrough</a></p></div></details>
+  </section>
+  <section class="download-section"><div class="wrap download-inner"><div><p class="eyebrow">TAKE A CLOSER LOOK</p><h2>Explore the workbook.<br>Read the code.</h2><p>A self-contained Excel/VBA portfolio project with fictional data and documented workflows.</p></div><div class="download-actions"><a class="button light" href="downloads/invoice-payment-tracker.xlsm" download>Download the Excel workbook <span aria-hidden="true">↓</span></a><a href="README.md">Project documentation <span aria-hidden="true">↗</span></a><small>Desktop Excel is required to run VBA macros.</small></div></div></section>
+</main>
+<footer class="wrap site-footer"><span>Charlotte Hummel</span><span>Invoice & Payment Tracker · Portfolio demonstration</span><a href="#top">Back to top ↑</a></footer>
+<dialog id="entry-dialog" aria-labelledby="dialog-title"><form id="entry-form"><header class="dialog-heading"><div><p class="eyebrow">SAMPLE ENTRY</p><h2 id="dialog-title">New invoice</h2></div><button type="button" class="icon-button" id="close-dialog" aria-label="Close entry form">×</button></header><p class="dialog-intro" id="dialog-intro"></p><div class="form-fields" id="form-fields"></div><p class="form-error" id="form-error" role="alert"></p><footer class="dialog-actions"><button type="button" class="button secondary" id="cancel-entry">Cancel</button><button class="button primary" type="submit" id="submit-entry">Save invoice</button></footer></form></dialog>
+</body>
+</html>
